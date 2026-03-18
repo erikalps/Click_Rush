@@ -3,9 +3,9 @@ import random
 
 class Target:
     def __init__(self, image, x=None, y=None):
-        self.image = image
-        self.width = image.get_width()
-        self.height = image.get_height()
+        self.image = pygame.transform.scale(image, (77, 34))
+        self.width = self.image.get_width()
+        self.height = self.image.get_height()
 
         # posição aleatória se não passar
         self.x = x if x is not None else random.randint(0, 800 - self.width)

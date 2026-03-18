@@ -2,7 +2,7 @@ from core import Menu
 import pygame
 
 from core.Menu import Menu
-
+from core.GameScreen import GameScreen
 
 class Game:
     def __init__(self):
@@ -16,20 +16,18 @@ class Game:
 
     def run(self):
             menu = Menu(self.window)
-            self.difficult = menu.run()
+            difficult = menu.run()
 
             print("Dificuldade escolhida", self.difficult)
 
-            while self.running:
-                for event in pygame.event.get():
-                    if event.type == pygame.QUIT:
-                        self.running = False
+            if difficult is None:
+                pygame.quit()
+                return
+            print("Dificuldade:", difficult)
 
-
-
-
-                self.window.fill((0, 0, 0))
-                pygame.display.update()
-
+            game_screm = GameScreen(self.window, difficult)
+            game_screm.run()
 
             pygame.quit()
+
+
