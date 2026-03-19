@@ -7,3 +7,6 @@ colorDifficultBtn = pygame.Color (70,130,180)
 colorBlack = pygame.Color (0,0,0)
 
 
+screen_width = 800
+screen_height = 600
+

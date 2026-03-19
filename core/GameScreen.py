@@ -1,4 +1,6 @@
 import pygame
+
+from core.Const import screen_width, screen_height
 from core.Target import Target
 
 
@@ -19,7 +21,7 @@ class GameScreen:
         self.game_duration = 60000  # 1 minuto
 
         #fundo
-        self.background = pygame.image.load("assets/images/Fase.png").convert()
+        self.background = pygame.image.load("assets/images/menu2.png").convert()
         self.background = pygame.transform.scale(self.background, (800, 600))
 
         # configurações por dificuldade
@@ -85,5 +87,15 @@ class GameScreen:
             time_text = font.render(f"Tempo: {time_left}", True, (255, 255, 255))
             self.window.blit(time_text, (650, 10))
 
+
+
+            instru_text = font.render("Para Capturar o Beagle click nele com o Botão esquerdo do mouse", True, (0, 0, 0))
+            text_rect = instru_text.get_rect()
+
+
+            x = screen_width - text_rect.width - 10
+            y = screen_height - text_rect.height - 10
+
+            self.window.blit(instru_text, (x, y))
             pygame.display.update()
             self.clock.tick(60)
