@@ -1,3 +1,5 @@
+
+
 import pygame
 import pygame.image
 from core.Const import colorDifficultBtn, colorEasyBtn,colorMediumBtn
@@ -8,7 +10,6 @@ from core.Button import Button
 class Menu:
     def __init__(self, window):
         self.window = window
-
         #carrega a imagem
         self.surf = pygame.image.load("./assets/images/menu2.png").convert_alpha()
         window_width = self.window.get_width()
@@ -20,10 +21,9 @@ class Menu:
     def run(self,):
 
         #botões para cada dificuldade
-        easy_btn = Button("Facil", x = 100, y = 100, width = 150, height = 80, color = colorEasyBtn)
-        medium_btn = Button("Medio", x = 100, y = 200, width= 150, height = 80, color = colorMediumBtn)
-        hard_btn = Button("Dificil", x = 100, y = 300, width = 150, height = 80, color = colorDifficultBtn)
-
+        easy_btn = Button("Facil", x=400, y=200, width=200, height=50, color=colorEasyBtn)
+        medium_btn = Button("Medio", x=400, y=300, width=200, height=50, color=colorEasyBtn)
+        hard_btn = Button("Dificil", x=400, y=400, width=200, height=50, color=colorEasyBtn)
 
         running = True
         while running:
@@ -42,13 +42,16 @@ class Menu:
                         return "Dificil"
 
 
-
             self.window.fill((0, 0, 0))
             self.window.blit(self.surf, self.rect)
             easy_btn.draw(self.window)
             medium_btn.draw(self.window)
             hard_btn.draw(self.window)
 
+
             pygame.display.flip() #atualiza a tela
+
+
+
 
 
