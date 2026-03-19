@@ -1,10 +1,11 @@
 import pygame
-from core.Const import colorEasyBtn, colorMediumBtn, colorDifficultBtn
+from core.Const import colorEasyBtn, colorMediumBtn, colorDifficultBtn, screen_width, screen_height
 from core.Button import Button
 
 class Menu:
     def __init__(self, window):
         self.window = window
+
 
         # fundo
         self.background = pygame.image.load("./assets/images/menu2.png").convert_alpha()
@@ -39,6 +40,12 @@ class Menu:
         y = 150
         self.window.blit(shadow_surface, (x - shadow_surface.get_width()//2 + 2, y + 2))
         self.window.blit(text_surface, (x - text_surface.get_width()//2, y))
+
+        #aqui
+        font_text = pygame.font.SysFont("Arial",  20, True)
+        instru_text = font_text.render("Para Capturar o Beagle click nele com um Botão no Mouse", True, (70,130,180))
+        text_rect = instru_text.get_rect()
+        self.window.blit(instru_text, (0, screen_height - text_rect.height - 10))
 
         pygame.display.flip()
 

@@ -89,13 +89,5 @@ class GameScreen:
 
 
 
-            instru_text = font.render("Para Capturar o Beagle click nele com o Botão esquerdo do mouse", True, (0, 0, 0))
-            text_rect = instru_text.get_rect()
-
-
-            x = screen_width - text_rect.width - 10
-            y = screen_height - text_rect.height - 10
-
-            self.window.blit(instru_text, (x, y))
             pygame.display.update()
             self.clock.tick(60)

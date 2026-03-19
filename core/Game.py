@@ -3,11 +3,11 @@ import pygame
 
 from core.Menu import Menu
 from core.GameScreen import GameScreen
-
+from core.Const import screen_width, screen_height
 class Game:
     def __init__(self):
         pygame.init()
-        self.window = pygame.display.set_mode(size = (800, 600))
+        self.window = pygame.display.set_mode(size = ( screen_width, screen_height))
         pygame.display.set_caption("Click Rush")
 
         self.running = True
