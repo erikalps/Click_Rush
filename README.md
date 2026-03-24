@@ -60,7 +60,7 @@ Click_Rush/
 
 ```bash
 # Clone o repositório
-git clone https://github.com/seu-usuario/Click_Rush.git
+git clone https://github.com/erikalps/Click_Rush.git
 cd Click_Rush
 
 # Instale a dependência
