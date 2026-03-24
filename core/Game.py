@@ -1,33 +1,44 @@
-from core import Menu
 import pygame
-
 from core.Menu import Menu
 from core.GameScreen import GameScreen
+from core.ScoreScreen import ScoreScreen
 from core.Const import screen_width, screen_height
+
+
 class Game:
     def __init__(self):
         pygame.init()
-        self.window = pygame.display.set_mode(size = ( screen_width, screen_height))
+        self.window = pygame.display.set_mode((screen_width, screen_height))
         pygame.display.set_caption("Click Rush")
 
-        self.running = True
-        self.difficult = None
-
-
     def run(self):
-            menu = Menu(self.window)
-            difficult = menu.run()
+        difficult = None
 
-            print("Dificuldade escolhida", self.difficult)
-
+        while True:
+            # 1. Menu — só exibe se não houver dificuldade já escolhida
             if difficult is None:
-                pygame.quit()
-                return
-            print("Dificuldade:", difficult)
+                menu = Menu(self.window)
+                difficult = menu.run()
 
-            game_screm = GameScreen(self.window, difficult)
-            game_screm.run()
+                if difficult is None:
+                    break  # jogador fechou a janela no menu
 
-            pygame.quit()
+            # 2. Partida
+            game_screen = GameScreen(self.window, difficult)
+            score = game_screen.run()
 
+            if score is None:
+                break  # jogador fechou a janela durante a partida
 
+            # 3. Tela de pontuação
+            score_screen = ScoreScreen(self.window, score, difficult)
+            result = score_screen.run()
+
+            if result == "restart":
+                pass           # mantém difficult e volta direto pra partida
+            elif result == "menu":
+                difficult = None  # limpa dificuldade para exibir o menu
+            else:
+                break          # jogador fechou a janela na tela de score
+
+        pygame.quit()

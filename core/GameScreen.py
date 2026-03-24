@@ -47,13 +47,13 @@ class GameScreen:
             # fim do jogo
             if now - self.start_time > self.game_duration:
                 self.running = False
-                return
+                return self.score
 
             # eventos
             for event in pygame.event.get():
                 if event.type == pygame.QUIT:
                     self.running = False
-                    return
+                    return self.score
 
                 if event.type == pygame.MOUSEBUTTONDOWN:
                     for target in self.targets[:]:
@@ -71,7 +71,6 @@ class GameScreen:
                 self.spawn_target()
                 self.spawn_timer = now
 
-            #  desenho (ordem correta!)
             self.window.blit(self.background, (0, 0))  # fundo primeiro
 
             for target in self.targets:
@@ -87,7 +86,6 @@ class GameScreen:
             time_text = font.render(f"Tempo: {time_left}", True, (255, 255, 255))
             self.window.blit(time_text, (650, 10))
 
-
-
             pygame.display.update()
             self.clock.tick(60)
+        return self.score

@@ -6,7 +6,6 @@ class Menu:
     def __init__(self, window):
         self.window = window
 
-
         # fundo
         self.background = pygame.image.load("./assets/images/menu2.png").convert_alpha()
         window_width, window_height = self.window.get_size()
@@ -43,7 +42,7 @@ class Menu:
 
         #aqui
         font_text = pygame.font.SysFont("Arial",  20, True)
-        instru_text = font_text.render("Para Capturar o Beagle click nele com um Botão no Mouse", True, (70,130,180))
+        instru_text = font_text.render("Para capturar o Beagle, click nele com qualquer botão do Mouse", True, (70,130,180))
         text_rect = instru_text.get_rect()
         self.window.blit(instru_text, (0, screen_height - text_rect.height - 10))
 
